@@ -63,15 +63,16 @@ nav {
 .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary);
+    transition: color 0.3s;
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 45px;
+    height: auto;
 }
 
 .nav-links {
@@ -179,12 +180,6 @@ section {
     margin-bottom: 30px;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
 .hero-image img {
     width: 400px;
     height: 400px;
@@ -193,10 +188,17 @@ section {
     object-fit: cover;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    animation: zoomInOut 6s ease-in-out infinite;
+}
+
+/* Zoom profil */
+@keyframes zoomInOut {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.05);}
 }
 
 .hero-image img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
     box-shadow: 0 20px 45px rgba(0,0,0,0.5);
 }
 
@@ -211,6 +213,25 @@ section {
     font-weight: 600;
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet pulse/shine bouton */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: skewX(-25deg);
+    transition: left 0.5s;
+}
+
+.btn:hover::after {
+    left: 125%;
 }
 
 .btn:hover {
@@ -264,48 +285,39 @@ section {
 }
 
 /* Projects */
-#projects {
-    background-color: rgba(255,255,255,0.95);
-}
 
 .projects-grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;           
+    justify-content: center;    
+    gap: 20px;                  
 }
 
 .project-card {
-    width: 300px;
-    height: 300px;
-    background-color: white;
+    width: 350px;               
+    height: 350px;              
+    overflow: hidden;
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s;
     display: flex;
-    flex-direction: column;
+    align-items: center;       
+    justify-content: center;    
+    background-color: #fff;     
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    position: relative;
+    transition: transform 0.3s;
 }
 
-.project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-}
-
-.project-image {
-    flex: 1;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.project-card img {
+    width: 150%;
+    height: 150%;
+    object-fit: cover;          
     transition: transform 0.5s;
 }
 
 .project-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.1);      
 }
+
 
 .project-overlay {
     position: absolute;
@@ -369,7 +381,6 @@ section {
     box-shadow: 0 0 10px rgba(37,99,235,0.3);
 }
 
-/* Footer */
 footer {
     background-color: #1a237e; /* Bleu de nuit */
     color: #fff;
@@ -387,19 +398,30 @@ footer {
     margin-bottom: 30px;
 }
 
+.footer-info {
+    flex: 1;
+}
+
 .footer-logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     font-size: 2rem;
     font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .footer-logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 55px;
+    height: auto;
 }
 
+.footer-info p {
+    font-size: 1rem;
+    color: #cfd8dc;
+}
+
+/* Icônes réseaux sociaux */
 .social-links {
     display: flex;
     gap: 15px;
@@ -412,7 +434,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: #ffca28;
+    color: #ffca28; /* couleur d’accent au survol */
     transform: scale(1.2);
 }
 
@@ -424,11 +446,11 @@ footer {
     color: #b0bec5;
 }
 
-/* Animations Reveal */
+/* Effets apparition scroll */
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
 
 .reveal.active {
@@ -452,8 +474,5 @@ footer {
     }
     .nav-links {
         display: none;
-    }
-    .projects-grid {
-        justify-content: center;
     }
 }
