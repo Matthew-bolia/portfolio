@@ -1,12 +1,21 @@
- /* Variables et reset */
+  /* Variables et reset */
 :root {
     --primary: #2563eb;
     --secondary: #3b82f6;
     --dark: #1e293b;
     --light: #f8fafc;
     --gray: #64748b;
+    --background: linear-gradient(-45deg, #09152e, #cdd0d5, #6b5b95, #77b9e6);
+    --text-color: var(--dark);
 }
 
+/* Dark mode variables */
+body.dark-mode {
+    --background: #1e293b;
+    --text-color: #f8fafc;
+}
+
+/* Reset général */
 * {
     margin: 0;
     padding: 0;
@@ -15,11 +24,12 @@
 }
 
 body {
-    background: linear-gradient(-45deg, #09152e, #cdd0d5, #6b5b95, #77b9e6);
+    background: var(--background);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    color: var(--dark);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Dégradé dynamique */
@@ -53,6 +63,7 @@ header.scrolled {
     box-shadow: 0 4px 25px rgba(0,0,0,0.15);
 }
 
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
@@ -86,7 +97,7 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--dark);
+    color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s, transform 0.3s;
     padding: 8px 12px;
@@ -99,21 +110,45 @@ nav {
     transform: translateY(-2px);
 }
 
-/* Hamburger for mobile */
-.hamburger {
+/* Hamburger menu */
+.menu-toggle {
     display: none;
     flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
     cursor: pointer;
-    background: none;
-    border: none;
+    z-index: 1100;
 }
 
-.hamburger span {
+.menu-toggle span {
+    display: block;
     height: 3px;
-    width: 25px;
-    background: var(--dark);
-    margin-bottom: 5px;
+    width: 100%;
+    background: var(--text-color);
     border-radius: 2px;
+    transition: 0.4s;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Dark Mode button */
+.dark-mode-toggle {
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: transform 0.3s, color 0.3s;
+    color: var(--text-color);
 }
 
 /* Sections */
@@ -125,7 +160,7 @@ section {
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.5rem;
-    color: var(--dark);
+    color: var(--text-color);
 }
 
 .section-title span {
@@ -180,6 +215,7 @@ section {
     margin-bottom: 30px;
 }
 
+/* Hero image */
 .hero-image img {
     width: 400px;
     height: 400px;
@@ -191,7 +227,6 @@ section {
     animation: zoomInOut 6s ease-in-out infinite;
 }
 
-/* Zoom profil */
 @keyframes zoomInOut {
     0%, 100% { transform: scale(1);}
     50% { transform: scale(1.05);}
@@ -217,7 +252,6 @@ section {
     overflow: hidden;
 }
 
-/* Effet pulse/shine bouton */
 .btn::after {
     content: "";
     position: absolute;
@@ -239,7 +273,7 @@ section {
     box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 
-/* About */
+/* About Section */
 #about {
     background-color: rgba(255,255,255,0.9);
 }
@@ -285,7 +319,6 @@ section {
 }
 
 /* Projects */
-
 .projects-grid {
     display: flex;
     flex-wrap: wrap;           
@@ -317,7 +350,6 @@ section {
 .project-card:hover img {
     transform: scale(1.1);      
 }
-
 
 .project-overlay {
     position: absolute;
@@ -381,8 +413,9 @@ section {
     box-shadow: 0 0 10px rgba(37,99,235,0.3);
 }
 
+/* Footer */
 footer {
-    background-color: #1a237e; /* Bleu de nuit */
+    background-color: #1a237e; 
     color: #fff;
     padding: 50px 20px 20px;
     border-top-left-radius: 50px;
@@ -396,10 +429,6 @@ footer {
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 30px;
-}
-
-.footer-info {
-    flex: 1;
 }
 
 .footer-logo {
@@ -416,12 +445,6 @@ footer {
     height: auto;
 }
 
-.footer-info p {
-    font-size: 1rem;
-    color: #cfd8dc;
-}
-
-/* Icônes réseaux sociaux */
 .social-links {
     display: flex;
     gap: 15px;
@@ -434,10 +457,11 @@ footer {
 }
 
 .social-links a:hover {
-    color: #ffca28; /* couleur d’accent au survol */
+    color: #ffca28;
     transform: scale(1.2);
 }
 
+/* Footer bottom */
 .footer-bottom {
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -446,7 +470,7 @@ footer {
     color: #b0bec5;
 }
 
-/* Effets apparition scroll */
+/* Scroll reveal */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -474,5 +498,89 @@ footer {
     }
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(255,255,255,0.95);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        gap: 15px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
     }
 }
+
+
+ /* =========================
+   Dark Mode et CV Button Header
+========================= */
+
+/* Bouton Dark Mode */
+.dark-mode-toggle {
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: transform 0.3s;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(37, 99, 235, 0.2); /* léger effet au survol */
+}
+
+/* Bouton Télécharger CV dans le header */
+nav #download-cv {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 25px; /* bouton arrondi */
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+nav #download-cv:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Mode sombre header et sections spécifiques */
+body.dark-mode header {
+    background-color: #0f1e3a; /* bleu de nuit */
+}
+
+body.dark-mode #about,
+body.dark-mode #contact {
+    background-color: #162a4f; /* bleu foncé légèrement différent pour distinguer sections */
+    color: #f0f0f0; /* texte clair */
+}
+
+body.dark-mode footer {
+    background-color: #1a237e; /* footer avec couleur différente */
+    color: #f0f0f0;
+}
+
+/* Texte des liens en dark mode */
+body.dark-mode .nav-links a {
+    color: #f0f0f0;
+}
+
+body.dark-mode .nav-links a:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+
+
+
