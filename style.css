@@ -581,6 +581,31 @@ body.dark-mode .nav-links a:hover {
     color: white;
 }
 
+/* Empêche le déplacement du profil quand le texte change */
+#typing {
+  display: inline-block;
+  min-height: 3rem; /* réserve une hauteur fixe */
+  min-width: 280px; /* réserve une largeur fixe pour le texte */
+  text-align: center;
+  white-space: normal; /* permet au texte de passer à la ligne si trop long */
+}
+
+/* Sur mobile, la section hero passe en colonne */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 20px;
+  }
+
+  .hero-image img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
 
 
 
