@@ -607,5 +607,40 @@ body.dark-mode .nav-links a:hover {
   }
 }
 
+/* Header responsive pour mobile */
+@media(max-width: 768px) {
+  header nav {
+    flex-wrap: wrap;           /* Permet aux éléments de se réorganiser */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .logo {
+    gap: 5px;                  /* Réduit l’espace entre logo et texte */
+    font-size: 1.2rem;         /* Texte légèrement plus petit */
+  }
+
+  header .logo img {
+    height: 35px;               /* Ajuste la taille du logo */
+    width: auto;
+  }
+
+  #download-cv {
+    margin-top: 10px;           /* Évite qu’il chevauche le menu */
+    font-size: 0.9rem;          /* Bouton plus petit pour mobile */
+    padding: 8px 20px;
+    border-radius: 12px;        /* Arrondi plus visible */
+  }
+
+  .nav-links {
+    top: 60px;                  /* Ajuste la position du menu déroulant */
+    right: 10px;
+  }
+
+  .menu-toggle {
+    z-index: 1200;              /* S’assure qu’il reste au-dessus */
+  }
+}
+
 
 
