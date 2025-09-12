@@ -129,24 +129,46 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact">
-    <div class="container reveal">
-      <h2 class="section-title">Me <span>contacter</span></h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <div class="contact-detail"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>mathiasbolia82@gmail.com</p></div></div>
-          <div class="contact-detail"><i class="fas fa-phone"></i><div><h4>Téléphone</h4><p>+243 825962850</p></div></div>
-          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><h4>Localisation</h4><p>Kinshasa, RDC</p></div></div>
+   <!-- Contact -->
+<section id="contact">
+  <div class="container reveal">
+    <h2 class="section-title">Me <span>contacter</span></h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-detail">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p>mathiasbolia82@gmail.com</p>
+          </div>
         </div>
-        <form class="contact-form">
-          <input type="text" placeholder="Nom complet" required />
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Message" required></textarea>
-          <button type="submit" class="btn pulse">Envoyer le message</button>
-        </form>
+        <div class="contact-detail">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Téléphone</h4>
+            <p>+243 825962850</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Localisation</h4>
+            <p>Kinshasa, RDC</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Formulaire Formspree -->
+      <form class="contact-form" action=" https://formspree.io/f/mnnboyoo" method="POST">
+        <input type="text" name="name" placeholder="Nom complet" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit" class="btn pulse">Envoyer le message</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer>
