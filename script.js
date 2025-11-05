@@ -1,4 +1,4 @@
-   // =========================
+  // =========================
 // TYPING TEXT EFFECT
 // =========================
 const typingEl = document.getElementById("typing");
@@ -14,7 +14,11 @@ if(typingEl){
     letter = currentText.slice(0, ++index);
     typingEl.textContent = letter;
     if(letter.length === currentText.length){
-      setTimeout(()=>{ index=0; count++; type(); },1500);
+      setTimeout(()=>{
+        index=0;
+        count++;
+        type();
+      },1500);
     } else {
       setTimeout(type,100);
     }
@@ -22,9 +26,9 @@ if(typingEl){
 }
 
 // =========================
-// SCROLL REVEAL & SKILLS BAR
+// SCROLL REVEAL SECTIONS
 // =========================
-function revealOnScroll() {
+window.addEventListener("scroll", function(){
   let reveals = document.querySelectorAll(".reveal");
   for (let i = 0; i < reveals.length; i++) {
     let windowHeight = window.innerHeight;
@@ -37,25 +41,7 @@ function revealOnScroll() {
       reveals[i].classList.remove("active");
     }
   }
-
-  // Animation skills bar
-  const skills = document.querySelectorAll(".skill-level");
-  skills.forEach(skill => {
-    const skillTop = skill.getBoundingClientRect().top;
-    if(skillTop < window.innerHeight - 100){
-      skill.style.width = skill.dataset.percent;
-      const span = skill.previousElementSibling.querySelector('span:last-child');
-      let width = 0;
-      const target = parseInt(skill.dataset.percent);
-      const interval = setInterval(()=>{
-        if(width >= target) clearInterval(interval);
-        else { width++; span.textContent = width + '%'; }
-      },15);
-    }
-  });
-}
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+});
 
 // =========================
 // HEADER SCROLL EFFECT
@@ -96,6 +82,7 @@ const darkModeBtn = document.createElement('button');
 darkModeBtn.classList.add('dark-mode-toggle');
 darkModeBtn.innerHTML = '🌓';
 darkModeBtn.title = 'Activer/Désactiver le mode sombre';
+
 const nav = document.querySelector('nav');
 nav.appendChild(darkModeBtn);
 
@@ -142,74 +129,68 @@ if(heroImage && heroSection){
     const rect = heroSection.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const rotateY = (x / rect.width - 0.5) * 20;
-    const rotateX = (0.5 - y / rect.height) * 20;
+
+    const rotateY = (x / rect.width - 0.5) * 20; // rotation horizontale
+    const rotateX = (0.5 - y / rect.height) * 20; // rotation verticale
+
     heroImage.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
   });
+
   heroSection.addEventListener('mouseleave', () => {
     heroImage.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
   });
 }
 
-// =========================
-// OUVRIR UN PROJET AU CLIC SUR LA CARTE
-// =========================
-const projectCards = document.querySelectorAll(".project-card");
-projectCards.forEach(card => {
-  const link = card.dataset.link;
-  if(link){
-    card.addEventListener('click', (e)=>{
-      if(!e.target.closest('.project-link')){
-        window.open(link, "_blank");
-      }
+ // Générer des symboles </> flottants
+const bgSymbols = document.querySelector('.bg-symbols');
+const symbolCount = 50; // nombre de symboles
+const symbols = [];
+
+for (let i = 0; i < symbolCount; i++) {
+    const span = document.createElement('span');
+    span.className = 'symbol';
+    span.innerHTML = '&lt;/&gt;';
+    // position initiale aléatoire
+    span.style.top = `${Math.random() * 100}%`;
+    span.style.left = `${Math.random() * 100}%`;
+    span.style.fontSize = `${Math.random() * 2 + 1}rem`;
+    // vitesse beaucoup plus faible pour un mouvement élégant
+    span.speed = Math.random() * 0.1 + 0.02; 
+    span.directionX = Math.random() < 0.5 ? 1 : -1;
+    span.directionY = Math.random() < 0.5 ? 1 : -1;
+    bgSymbols.appendChild(span);
+    symbols.push(span);
+}
+
+// Animation continue fluide
+function animateSymbols() {
+    symbols.forEach(sym => {
+        let top = parseFloat(sym.style.top);
+        let left = parseFloat(sym.style.left);
+
+        // déplacement lent et subtil
+        top += sym.speed * sym.directionY;
+        left += sym.speed * sym.directionX;
+
+        // rebond doux sur les bords
+        if (top > 100 || top < 0) sym.directionY *= -1;
+        if (left > 100 || left < 0) sym.directionX *= -1;
+
+        sym.style.top = `${top}%`;
+        sym.style.left = `${left}%`;
     });
-  }
+
+    requestAnimationFrame(animateSymbols);
+}
+
+animateSymbols();
+
+document.querySelectorAll('a.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 
-// =========================
-// 3D SYMBOLS BACKGROUND (Three.js)
-// =========================
-const hero3DBg = document.getElementById('hero-3d-bg');
-if(hero3DBg){
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, hero3DBg.clientWidth / hero3DBg.clientHeight, 0.1, 1000);
-  camera.position.z = 50;
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setSize(hero3DBg.clientWidth, hero3DBg.clientHeight);
-  hero3DBg.appendChild(renderer.domElement);
 
-  const symbols = [];
-  const loader = new THREE.FontLoader();
-  loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font){
-    for(let i=0; i<50; i++){
-      const geometry = new THREE.TextGeometry('</>', {
-        font: font,
-        size: 3,
-        height: 0.5,
-        curveSegments: 12
-      });
-      const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set((Math.random()-0.5)*100, (Math.random()-0.5)*60, (Math.random()-0.5)*50);
-      mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
-      scene.add(mesh);
-      symbols.push(mesh);
-    }
-  });
-
-  function animate(){
-    requestAnimationFrame(animate);
-    symbols.forEach(sym => {
-      sym.rotation.x += 0.005;
-      sym.rotation.y += 0.01;
-    });
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = hero3DBg.clientWidth / hero3DBg.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(hero3DBg.clientWidth, hero3DBg.clientHeight);
-  });
-}
