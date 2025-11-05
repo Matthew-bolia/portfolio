@@ -35,31 +35,33 @@
           <span></span>
           <span></span>
         </button>
-
-        <!-- Bouton Télécharger CV dans le header -->
-         
+        <!-- Les boutons Dark Mode et Télécharger CV seront ajoutés via script.js -->
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-   <!-- Hero -->
-<section id="hero">
+  <!-- HERO 3D -->
+   <section id="hero" class="hero-3d">
   <div class="container hero-content">
-    <div class="hero-text reveal">
-      <h1>
-        <span id="typing" data-texts='[
-          "Développeur Web & Mobile Passionné",
-          "Créateur d’expériences digitales uniques",
-          "Toujours à la recherche de nouveaux défis"
-        ]'>Développeur Web & Mobile Passionné</span>
-      </h1>
-      <p>Je crée des expériences digitales exceptionnelles qui marquent les esprits et résolvent des problèmes réels.</p>
-      <a href="#projects" class="btn pulse">Voir mes projets</a>
+    <div class="hero-text">
+      <h1>Développeur Web & Mobile <span class="name-highlight">passionné</span></h1>
+      <p>je crée des expériences digitales exceptionnelles qui marquent les esprits et résolvent des problèmes réels.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary">Voir mes projets</a>
+        <a href="#contact" class="btn secondary">Me contacter</a>
+      </div>
     </div>
-    <div class="hero-image reveal">
-      <img src="MB.png" alt="Portrait de Matthew Bolia" />
+
+    <div class="hero-image">
+      <div class="image-border">
+        <img src="MB.png" alt="Photo de Matthew Bolia" />
+      </div>
     </div>
+  </div>
+
+  <!-- Symbole 3D en dehors de hero-content -->
+  <div class="hero-3d-symbol">
+    &lt;/&gt;
   </div>
 </section>
 
@@ -71,22 +73,22 @@
       <div class="about-content">
         <div class="about-text">
           <h3>Développeur avec passion pour l'innovation</h3>
-          <p>Bonjour ! Je suis Matthew Bolia, développeur web et mobile, passionné par la création d'applications qui améliorent la vie des utilisateurs.</p>
+          <p>Je suis étudiant autodidacte et développeur Web & Mobile passionné. Mon parcours est guidé par la curiosité, la persévérance et la volonté constante d'apprendre par moi-même.</p>
           <p>J’ai développé des projets concrets en Flutter et React. Je combine créativité et expertise technique pour résoudre des problèmes complexes.</p>
-          <p>Je suis constamment à la recherche de nouveaux défis et d’opportunités d’apprendre les technologies émergentes comme Firebase, Dart server, et SQL server.</p>
+          <p>Au fil de mes expériences, j'ai acquis des compétences solides dans la création d'applications mobiles avec Flutter et Firebase, ainsi que dans le développement Web à travers HTML, CSS et JavaScript. J'explore également la programmation en Python et je maîtrise l'usage d'outils de développement tels que Visual Studio Code et GitHub pour la gestion de mes projets.</p>
         </div>
         <div class="skills">
           <div class="skill">
             <div class="skill-name"><span>HTML/CSS</span><span>65%</span></div>
-            <div class="skill-bar"><div class="skill-level"  style="width: 90%"></div></div>
+            <div class="skill-bar"><div class="skill-level"  style="width: 65%"></div></div>
           </div>
           <div class="skill">
-            <div class="skill-name"><span>JavaScript</span><span>60%</span></div>
-            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+            <div class="skill-name"><span>JavaScript</span><span>55%</span></div>
+            <div class="skill-bar"><div class="skill-level" style="width: 55%"></div></div>
           </div>
           <div class="skill">
             <div class="skill-name"><span>Flutter</span><span>70%</span></div>
-            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+            <div class="skill-bar"><div class="skill-level" style="width: 70%"></div></div>
           </div>
         </div>
       </div>
@@ -130,46 +132,43 @@
   </section>
 
   <!-- Contact -->
-   <!-- Contact -->
-<section id="contact">
-  <div class="container reveal">
-    <h2 class="section-title">Me <span>contacter</span></h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <div class="contact-detail">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <h4>Email</h4>
-            <p>mathiasbolia82@gmail.com</p>
+  <section id="contact">
+    <div class="container reveal">
+      <h2 class="section-title">Me <span>contacter</span></h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>mathiasbolia82@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Téléphone</h4>
+              <p>+243 825962850</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Localisation</h4>
+              <p>Kinshasa, RDC</p>
+            </div>
           </div>
         </div>
-        <div class="contact-detail">
-          <i class="fas fa-phone"></i>
-          <div>
-            <h4>Téléphone</h4>
-            <p>+243 825962850</p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <h4>Localisation</h4>
-            <p>Kinshasa, RDC</p>
-          </div>
-        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/mnnboyoo" method="POST">
+          <input type="text" name="name" placeholder="Nom complet" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit" class="btn pulse">Envoyer le message</button>
+        </form>
       </div>
-
-      <!-- Formulaire Formspree -->
-      <form class="contact-form" action=" https://formspree.io/f/mnnboyoo" method="POST">
-        <input type="text" name="name" placeholder="Nom complet" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit" class="btn pulse">Envoyer le message</button>
-      </form>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Footer -->
   <footer>
