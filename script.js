@@ -55,25 +55,25 @@ window.addEventListener('scroll', ()=>{
   }
 });
 
+ // =========================
+// 🔹 Menu hamburger
 // =========================
-// MENU HAMBURGER TOGGLE
-// =========================
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-if(menuToggle && navLinks){
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('open');
-  });
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
 
-  navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      menuToggle.classList.remove("open");
-    });
+// Fermer le menu quand on clique sur un lien
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    menuToggle.classList.remove("active");
+    navLinks.classList.remove("active");
   });
-}
+});
+
 
 // =========================
 // DARK MODE
