@@ -71,30 +71,73 @@
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container reveal">
-      <h2 class="section-title">À <span>propos</span> de moi</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Développeur avec passion pour l'innovation</h3>
-          <p>Je suis étudiant autodidacte et développeur Web & Mobile passionné. Mon parcours est guidé par la curiosité, la persévérance et la volonté constante d'apprendre par moi-même.</p>
-          <p>J’ai développé des projets concrets en Flutter et React. Je combine créativité et expertise technique pour résoudre des problèmes complexes.</p>
-          <p>Au fil de mes expériences, j'ai acquis des compétences solides dans la création d'applications mobiles avec Flutter et Firebase, ainsi que dans le développement Web à travers HTML, CSS et JavaScript. J'explore également la programmation en Python et je maîtrise l'usage d'outils de développement tels que Visual Studio Code et GitHub pour la gestion de mes projets.</p>
+   <!-- About -->
+<section id="about">
+  <div class="container reveal">
+    <h2 class="section-title">À <span>propos</span> de moi</h2>
+    <div class="about-content">
+    
+      <div class="about-text">
+        <h3>Développeur avec passion pour l'innovation</h3>
+        <p>Je suis étudiant autodidacte et développeur Web & Mobile passionné. Mon parcours est guidé par la curiosité, la persévérance et la volonté constante d'apprendre par moi-même.</p>
+        <p>J’ai développé des projets concrets en Flutter et React. Je combine créativité et expertise technique pour résoudre des problèmes complexes.</p>
+        <p>Au fil de mes expériences, j'ai acquis des compétences solides dans la création d'applications mobiles avec Flutter et Firebase, ainsi que dans le développement Web à travers HTML, CSS et JavaScript. J'explore également la programmation en Python et je maîtrise l'usage d'outils de développement tels que Visual Studio Code et GitHub pour la gestion de mes projets.</p>
+      </div>
+      
+      <div class="skills">
+        <div class="skill">
+          <div class="skill-name"><span>HTML/CSS</span><span>65%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-value="65%"></div></div>
         </div>
-        <div class="skills">
-          <div class="skill">
-            <div class="skill-name"><span>HTML/CSS</span><span>65%</span></div>
-            <div class="skill-bar"><div class="skill-level"  style="width: 65%"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-name"><span>JavaScript</span><span>55%</span></div>
-            <div class="skill-bar"><div class="skill-level" style="width: 55%"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-name"><span>Flutter</span><span>70%</span></div>
-            <div class="skill-bar"><div class="skill-level" style="width: 70%"></div></div>
-          </div>
+        <div class="skill">
+          <div class="skill-name"><span>JavaScript</span><span>55%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-value="55%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name"><span>Flutter</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-value="70%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  </section>
+
+  <!-- 🔧 COMPÉTENCES TECHNIQUES -->
+  <section id="skills" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Compétences <span>techniques</span></h2>
+      <div class="tech-grid">
+        <div class="tech-item"><i class="fab fa-html5"></i><h4>HTML5</h4><p>Structure propre et sémantique des pages web modernes.</p></div>
+        <div class="tech-item"><i class="fab fa-css3-alt"></i><h4>CSS3</h4><p>Design responsive, flexbox, grid et animations.</p></div>
+        <div class="tech-item"><i class="fab fa-js"></i><h4>JavaScript</h4><p>Création d’interfaces dynamiques et interactives.</p></div>
+        <div class="tech-item"><i class="fab fa-react"></i><h4>React</h4><p>Développement d’applications web performantes.</p></div>
+        <div class="tech-item"><i class="fab fa-flutter"></i><h4>Flutter</h4><p>Applications mobiles cross-platform élégantes.</p></div>
+        <div class="tech-item"><i class="fas fa-database"></i><h4>Firebase</h4><p>Authentification, base de données et hébergement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💼 SERVICES -->
+  <section id="services" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Mes <span>services</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Développement Web</h3>
+          <p>Création de sites modernes, performants et responsives adaptés à vos besoins.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Applications Mobiles</h3>
+          <p>Conception d’applications mobiles avec Flutter pour Android et iOS.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-code-branch"></i>
+          <h3>Maintenance & Optimisation</h3>
+          <p>Suivi, amélioration des performances et ajout de nouvelles fonctionnalités.</p>
         </div>
       </div>
     </div>
@@ -135,6 +178,28 @@
       </div>
     </div>
   </section>
+
+     <!-- TÉMOIGNAGES -->
+<section id="testimonials" class="reveal">
+  <div class="container">
+    <h2 class="section-title">Ce que <span>disent</span> mes clients</h2>
+
+    <!-- Liste des témoignages -->
+    <div class="testimonials-grid" id="testimonial-list">
+       
+    </div>
+
+    <!-- Formulaire pour ajouter un témoignage -->
+    <div class="testimonial-form">
+      <h3>Laissez votre avis</h3>
+      <form id="add-testimonial-form">
+        <input type="text" id="client-name" placeholder="Votre nom" required>
+        <textarea id="client-message" placeholder="Votre témoignage..." required></textarea>
+        <button type="submit" class="btn pulse">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</section>
 
   <!-- Contact -->
   <section id="contact">
