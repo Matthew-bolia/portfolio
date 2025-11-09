@@ -193,4 +193,51 @@ document.querySelectorAll('a.nav-link').forEach(link => {
     });
 });
 
+// 🧩 GESTION DES TÉMOIGNAGES
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("add-testimonial-form");
+  const list = document.getElementById("testimonial-list");
 
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("client-name").value.trim();
+      const message = document.getElementById("client-message").value.trim();
+
+      if (name && message) {
+        // Crée une nouvelle carte témoignage
+        const card = document.createElement("div");
+        card.classList.add("testimonial-card");
+        card.innerHTML = `<p>“${message}”</p><h4>- ${name}</h4>`;
+        list.prepend(card); // Ajoute au début de la liste
+
+        // Réinitialise le formulaire
+        form.reset();
+      } else {
+        alert("Merci de remplir tous les champs avant d’envoyer !");
+      }
+    });
+  }
+});
+
+// Sélectionner toutes les barres de compétence
+const skillLevels = document.querySelectorAll('.skill-level');
+
+function animateSkills() {
+    skillLevels.forEach(skill => {
+        const skillTop = skill.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (skillTop < windowHeight - 50) { // quand la barre est visible
+            skill.style.setProperty('--skill-value', skill.getAttribute('data-value'));
+            skill.classList.add('active');
+        }
+    });
+}
+
+// Écoute du scroll
+window.addEventListener('scroll', animateSkills);
+
+// Animation au chargement si visible
+window.addEventListener('load', animateSkills);
