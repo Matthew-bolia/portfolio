@@ -59,7 +59,7 @@ header {
     width: 100%;
     z-index: 1000;
     transition: all 0.3s;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(225, 213, 213, 0.8);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
@@ -111,7 +111,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: white;
+    color: rgb(0, 0, 0);
     background: var(--primary);
     transform: translateY(-2px);
 }
@@ -579,7 +579,7 @@ body.dark-mode header {
 body.dark-mode #about,
 body.dark-mode #contact {
     background-color: #162a4f; /* bleu foncé légèrement différent pour distinguer sections */
-    color: #f0f0f0; /* texte clair */
+    color: #000000; /* texte clair */
 }
 
 body.dark-mode footer {
@@ -1059,10 +1059,247 @@ body.dark-mode .nav-links a:hover {
   }
 
   body.dark-mode .nav-links a {
-    color: #f1f5f9; /* texte clair */
+    color: #1c1c1d; /* texte clair */
   }
 
   body.dark-mode .hamburger span {
     background-color: #f1f5f9;
   }
+}
+
+ /* ===========================
+   💬 TÉMOIGNAGES
+=========================== */
+#testimonials {
+  padding: 100px 0;
+  background: var(--section-bg, #111);
+  text-align: center;
+}
+
+#testimonials .section-title span {
+  color: var(--primary-color);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.testimonial-card {
+  background: var(--card-bg, #000004);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid var(--primary-color);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  color: var(--text-muted, #ccc);
+  line-height: 1.6;
+}
+
+.testimonial-card h4 {
+  margin-top: 15px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* 🎯 Formulaire d'ajout de témoignage */
+.testimonial-form {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.testimonial-form h3 {
+  margin-bottom: 20px;
+}
+
+.testimonial-form form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.testimonial-form input,
+.testimonial-form textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #222;
+  color: #bbb;
+  font-size: 0.95em;
+}
+
+.testimonial-form textarea {
+  resize: none;
+  height: 120px;
+}
+
+.testimonial-form button {
+  align-self: center;
+  margin-top: 10px;
+}
+
+ 
+
+
+/* ===========================
+   💻 COMPÉTENCES TECHNIQUES
+=========================== */
+#skills {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#skills .section-title span {
+  color: #2563eb;;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.tech-item {
+  background: var(--card-bg, #000004);
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.tech-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.tech-item i {
+  font-size: 45px;
+  color: #2563eb;;
+  margin-bottom: 15px;
+}
+
+.tech-item h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.tech-item p {
+  font-size: 0.95em;
+  color: var(--text-muted, #f9f7f7);
+  line-height: 1.5;
+}
+
+/* ===========================
+   💼 SERVICES
+=========================== */
+#services {
+  padding: 100px 0;
+  background: var(--section-bg, #000004);
+  text-align: center;
+}
+
+#services .section-title span {
+  color: var(--primary-color);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: var(--card-bg, #000000);
+  padding: 40px 25px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.service-card i {
+  font-size: 48px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95em;
+  color: var(--text-muted, #bbb);
+  line-height: 1.6;
+}
+
+/* 🌗 Mode sombre/clair */
+.dark-mode #skills,
+.dark-mode #services {
+  background: #111;
+}
+
+.dark-mode .tech-item,
+.dark-mode .service-card {
+  background: #1f1f1f;
+  color:  #2563eb;;
+}
+
+.light-mode .tech-item,
+.light-mode .service-card {
+  background: #2563eb;;
+  color:  #2563eb;;
+}
+
+.light-mode .tech-item p,
+.light-mode .service-card p {
+  color:  #2563eb;;
+}
+
+/* Animation de remplissage */
+@keyframes fillSkill {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--skill-value);
+    }
+}
+
+/* Barre de compétence */
+.skill-level {
+    width: 0; /* départ vide */
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Quand la barre est active */
+.skill-level.active {
+    animation: fillSkill 1.5s forwards;
 }
